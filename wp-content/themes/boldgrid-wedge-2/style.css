@@ -1,0 +1,541 @@
+/*
+Theme Name: Wedge
+Author: The BoldGrid Team
+Theme URI: http://www.boldgrid.com/wedge
+Author URI: http://www.boldgrid.com/the-team
+Description: Designed specifically for use with the BoldGrid suite of plugins, all BoldGrid themes are highly customizable, responsive to a wide range of devices, and of course, beautiful. Every BoldGrid theme includes five pre-selected color palettes and an advanced tool for creating your own unique palette. In addition, all themes feature multiple menu locations and widget areas, which are easily customizable to suit your needs. So if you're looking for a theme that looks great, feels modern and professional, and offers plenty of features to make it your own, you've chosen well.
+Version: 1.16.11
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: boldgrid-wedge
+
+Tags: custom-background, custom-colors, custom-menu, editor-style, responsive-layout, rtl-language-support, translation-ready, boldgrid-theme-44
+*/
+
+/*------------------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+--------------------------------------------------------------------------
+# Base Styles
+	## Background
+	## Positioning
+	## Typography
+	## Titles
+	## Buttons
+	## Et Cetera
+# Header
+# Navigation
+	## Main Menu
+	## Other Menus
+	## Social Menus
+# Modules
+	## Global
+	## Alpha
+	## Beta
+	## Gamma
+# Pages
+# Posts
+# Plugins
+	## WooCommerce
+# Footer
+------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------
+# Base Styles
+------------------------------------------------------------------------*/
+
+/*-----------------------------------------------
+## Background
+-----------------------------------------------*/
+.entry-content > .bgtfw > .container-fluid {
+	margin-right: -15px;
+	margin-left: -15px;
+	padding: 70px 0 150px 0;
+	position: relative;
+	z-index: 100;
+}
+.entry-content > .bgtfw > .container-fluid::before,
+.entry-content > .bgtfw > .container-fluid::after {
+	content: "";
+	height: 50px;
+	position: absolute;
+	top: -50px;
+	width: 50%;
+}
+.entry-content > .bgtfw > .container-fluid::before {
+	left: -20px;
+	transform: skew(40deg);
+}
+.entry-content > .bgtfw > .container-fluid::after {
+	right: -20px;
+	transform: skew(-40deg);
+}
+
+/* Extra small devices (phones, less than 768px) */
+.entry-content > .bgtfw > .container-fluid:last-child {
+	padding-bottom: 0;
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.entry-content > .bgtfw > .container-fluid:last-child {
+		padding-bottom: 75px;
+	}
+}
+
+/*-----------------------------------------------
+## Positioning
+-----------------------------------------------*/
+.page-template-page_home .site-content {
+	overflow-x: hidden;
+	padding: 15px;
+}
+p {
+	margin-bottom: 15px;
+}
+
+/*-----------------------------------------------
+## Typography
+-----------------------------------------------*/
+.entry-title:first-letter {
+	font-size: 200%;
+}
+h3,
+h5 {
+	font-weight: bold;
+}
+.slogan {
+	word-wrap: break-word;
+}
+#menu-social li a {
+	-webkit-font-smoothing: antialiased;
+}
+a:hover,
+a:focus {
+	text-decoration: none;
+}
+#secondary-menu,
+.menu-social,
+.mod-alpha,
+.mod-alpha p,
+.mod-beta,
+.mod-beta p,
+.mod-divider p,
+.site-footer p {
+	text-align: center;
+}
+
+/* Extra small devices (phones, less than 768px) */
+.site-title,
+.site-description,
+.xs-center,
+.mod-img,
+.mod-img-circle,
+.p-button-primary,
+.p-button-secondary,
+.navbar-default .navbar-nav,
+.navbar-default .navbar-nav .open .dropdown-menu {
+	text-align: center;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.navbar-default .navbar-nav,
+	.navbar-default .navbar-nav .open .dropdown-menu {
+		text-align: left;
+	}
+	.menu-social {
+		text-align: right;
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.site-title,
+	.site-description,
+	.xs-center,
+	.mod-img,
+	.mod-img-circle,
+	.p-button-primary,
+	.p-button-secondary {
+		text-align: left;
+	}
+}
+
+/*-----------------------------------------------
+## Titles
+-----------------------------------------------*/
+.page-template-page_home .entry-title {
+	display: none;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.archive .entry-title,
+	.single .entry-title {
+		margin-left: -12px;
+	}
+	.bg_attribution-template-default .entry-title {
+		margin-left: 0;
+	}
+}
+
+/*-----------------------------------------------
+## Buttons
+-----------------------------------------------*/
+.button-primary,
+.button-secondary {
+	border-radius: 2px;
+	padding: 8px 45px;
+}
+
+/* Call To Action */
+.call-to-action .button-primary {
+	display: inline-block;
+}
+.call-to-action .p-button-primary {
+	margin-top: 0;
+}
+
+/* Positioning */
+.p-button-primary,
+.p-button-secondary {
+	margin: 25px 0;
+	padding-top: 15px;
+}
+
+/* Block vs. Inline */
+.button-primary,
+.button-secondary {
+	display: block;
+	margin-top: 15px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.button-primary,
+	.button-secondary {
+		display: inline;
+		margin-top: 0;
+	}
+	.gridblock .p-button-secondary {
+		margin: 25px 0;
+	}
+}
+
+/*-----------------------------------------------
+## Et Cetera
+-----------------------------------------------*/
+hr {
+	margin-bottom: 30px;
+	margin-top: 0;
+	border: 1px solid;
+	position: relative;
+}
+hr::after {
+	content: "";
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 8px solid;
+	left: 50%;
+	margin-left: -8px;
+	position: absolute;
+}
+.well {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+.well .table-striped > tbody > tr:nth-of-type(2n+1) {
+	background: transparent;
+}
+.hentry {
+	margin: 0;
+}
+.hentry:first-child ~ .hentry {
+	margin-top: 50px;
+}
+
+/*------------------------------------------------------------------------
+# Header
+------------------------------------------------------------------------*/
+.site-description {
+	margin-left: 5px;
+	margin-top: 0;
+}
+
+/*-----------------------------------------------
+## Call To Action
+-----------------------------------------------*/
+.call-to-action-wrapper {
+	margin-bottom: 80px;
+}
+.call-to-action {
+	margin-bottom: 35px;
+}
+.call-to-action hr {
+	margin-top: 0;
+}
+.call-to-action hr::after {
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	content: "";
+	position: absolute;
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.call-to-action-wrapper {
+		background-color: transparent;
+		margin-bottom: 0;
+	}
+	.call-to-action {
+		margin: 0;
+		min-height: 650px;
+	}
+	.slogan {
+		margin-top: 100px;
+	}
+}
+
+/*------------------------------------------------------------------------
+# Navigation
+------------------------------------------------------------------------*/
+
+/*-----------------------------------------------
+## Main Menu
+-----------------------------------------------*/
+.navbar {
+	border: none;
+	min-height: 0;
+}
+.navbar-default {
+	background: none;
+	margin-bottom: 0;
+}
+.navbar-default .navbar-nav {
+	margin-left: -15px;
+}
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > .active > a {
+	padding: 10px 20px;
+}
+.navbar-default .navbar-nav > li:first-child > a {
+	margin-left: 0;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover,
+.navbar-default .navbar-nav > .current-menu-parent > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+	background: none;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.navbar-default .navbar-nav > li > a,
+	.navbar-default .navbar-nav > .active > a {
+		background: transparent;
+		border-bottom: 3px solid transparent;
+	}
+	.navbar-default {
+		float: right;
+	}
+}
+
+/*-----------------------------------------------
+## Other Menus
+-----------------------------------------------*/
+#secondary-menu a,
+#menu-social a {
+	padding: 0 5px;
+}
+#tertiary-menu {
+	margin-left: -5px;
+}
+#tertiary-menu li {
+	padding: 0 5px;
+}
+.footer-center-items {
+	text-align: center;
+}
+.footer-center-items li::after,
+.boldgrid-framework-menu li::after {
+	content: "";
+}
+
+/*-----------------------------------------------
+## Social Menus
+-----------------------------------------------*/
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.menu-social {
+		margin-top: 24px;
+		padding-right: 20px;
+	}
+}
+
+/*------------------------------------------------------------------------
+# Modules
+------------------------------------------------------------------------*/
+
+/*-----------------------------------------------
+## Global
+-----------------------------------------------*/
+/* Dividers */
+.mod-divider {
+	margin: 4em 0;
+}
+.mod-divider p {
+	margin-top: -45px;
+}
+
+/* Blockquotes */
+blockquote,
+.mod-blockquote {
+	padding-top: 2px;
+}
+blockquote p,
+.mod-blockquote p {
+	padding-left: 15px;
+}
+
+/*-----------------------------------------------
+## Alpha
+-----------------------------------------------*/
+.mod-alpha img {
+	margin-bottom: 30px;
+}
+.mod-alpha h3 {
+	margin-bottom: 20px;
+}
+
+/*-----------------------------------------------
+## Beta
+-----------------------------------------------*/
+.mod-beta-1 {
+	border-radius: 5px;
+	margin: 10%;
+	padding: 15px;
+}
+.mod-beta-1:before {
+	content: "";
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	height: 0;
+	left: 50%;
+	margin: -35px 0 0 -10px;
+	position: absolute;
+	width: 0;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.mod-beta-1 {
+		margin-top: 15%;
+	}
+}
+
+/*------------------------------------------------------------------------
+# Pages
+------------------------------------------------------------------------*/
+/* 404 page */
+.error404 .jumbotron {
+	background-color: transparent;
+}
+
+/* Search Page */
+.search .jumbotron {
+	background: none;
+	text-align: center;
+}
+
+/*------------------------------------------------------------------------
+# Posts
+------------------------------------------------------------------------*/
+.widget-title,
+.page-title {
+	margin-top: 50px;
+}
+.nav-links {
+	margin: 25px 0;
+}
+
+/* Comments */
+.panel,
+.panel-default > .panel-heading {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+.panel-footer {
+	border-top: 1px solid transparent;
+}
+
+/*------------------------------------------------------------------------
+# Plugins
+------------------------------------------------------------------------*/
+
+/*-----------------------------------------------
+## WooCommerce
+-----------------------------------------------*/
+.woocommerce div.product {
+	margin-top: 40px;
+}
+.woocommerce-account p.order-again .btn.button-primary {
+	padding: 12px 24px;
+}
+
+/* Product Page Tabs */
+.woocommerce #reviews #comments ol.commentlist li .comment-text {
+	border: none;
+}
+
+/*-----------------------------------------------
+## The Events Calendar
+-----------------------------------------------*/
+.post-type-archive-tribe_events h4.entry-title:first-letter {
+	color: inherit;
+	font-size: 200%;
+}
+h1.tribe-events-single-event-title:first-letter {
+	font-size: 200%;
+}
+
+/*------------------------------------------------------------------------
+# Footer
+------------------------------------------------------------------------*/
+.site-footer p {
+	margin-top: 10px;
+}
+.footer-center-items li a {
+	padding: 5px;
+}
+.site-footer {
+	padding-top: 30px;
+}
+#colophon .boldgrid-widget {
+	margin-top: 30px;
+}
+.attribution-theme-mods {
+	display: block;
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+/* Disabled Footer */
+.disabled-footer .site-footer {
+	height: 75px;
+}
