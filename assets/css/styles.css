@@ -162,10 +162,10 @@ a:hover{ text-decoration: none; }
   align-items:center;
   gap: 8px;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: flex-end;
   overflow-x: auto;
   scrollbar-width: none;
-  padding: 2px 0;
+  padding: 2px 10px;
 }
 .nav-links::-webkit-scrollbar{ display: none; }
 .nav-links a{
