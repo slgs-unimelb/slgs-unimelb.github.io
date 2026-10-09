@@ -12,7 +12,13 @@
       </span>
     </a>
 
-    <nav class="nav-links" aria-label="Primary">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+
+    <nav id="primary-nav" class="nav-links" aria-label="Primary">
       <a data-nav href="{{BASE}}/index.html#about">About</a>
       <a data-nav data-page="events" href="{{BASE}}/index.html#events">Events</a>
       <a data-nav href="{{BASE}}/index.html#scholarships">Scholarships</a>

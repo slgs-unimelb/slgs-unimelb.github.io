@@ -103,6 +103,37 @@
     });
   }
 
+  // Mobile nav menu toggle (bound after the header partial is injected)
+  function initNavToggle() {
+    const header = document.querySelector('.nav');
+    const toggle = header && header.querySelector('.nav-toggle');
+    const menu = header && header.querySelector('.nav-links');
+    if (!toggle || !menu) return;
+
+    function setOpen(open) {
+      header.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    toggle.addEventListener('click', () => setOpen(!header.classList.contains('nav-open')));
+    menu.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && header.classList.contains('nav-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    window.matchMedia('(min-width: 981px)').addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+
   // Shared header loader
   const headerHost = document.querySelector('[data-header]');
   if (headerHost) {
@@ -121,6 +152,8 @@
           const link = document.querySelector(`[data-page="${current}"]`);
           if (link) link.setAttribute('aria-current', 'page');
         }
+
+        initNavToggle();
       })
       .catch(() => {
         // Fail silently for static-only environments.
