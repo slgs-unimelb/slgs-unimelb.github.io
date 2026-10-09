@@ -103,6 +103,74 @@
     });
   }
 
+  // Recent events collage: every few seconds one tile cross-fades to a photo not currently shown
+  const collage = document.querySelector('.collage');
+  const poolEl = document.querySelector('[data-collage-pool]');
+  if (collage && poolEl && !prefersReduced) {
+    let pool = [];
+    try {
+      pool = JSON.parse(poolEl.textContent);
+    } catch (e) {
+      pool = [];
+    }
+    const tiles = [...collage.querySelectorAll('.collage-tile')];
+    const SHUFFLE_MS = 3000;
+    const FADE_MS = 800;
+    let timer = null;
+    let lastTile = null;
+    let busy = false;
+
+    const pick = (list) => list[Math.floor(Math.random() * list.length)];
+
+    function shuffleOnce() {
+      if (busy) return;
+      const shown = new Set(tiles.map((t) => t.querySelector('img').getAttribute('src')));
+      const hidden = pool.filter((p) => !shown.has(p.src));
+      if (!hidden.length) return;
+
+      const tile = pick(tiles.filter((t) => t !== lastTile));
+      const next = pick(hidden);
+      const oldImg = tile.querySelector('img');
+      const newImg = new Image();
+      newImg.src = next.src;
+      newImg.alt = next.alt;
+      newImg.className = 'is-entering';
+      busy = true;
+
+      newImg
+        .decode()
+        .catch(() => {})
+        .then(() => {
+          tile.appendChild(newImg);
+          tile.href = next.href;
+          requestAnimationFrame(() => newImg.classList.remove('is-entering'));
+          setTimeout(() => {
+            oldImg.remove();
+            busy = false;
+          }, FADE_MS);
+          lastTile = tile;
+        });
+    }
+
+    const start = () => {
+      if (!timer) timer = setInterval(shuffleOnce, SHUFFLE_MS);
+    };
+    const stop = () => {
+      clearInterval(timer);
+      timer = null;
+    };
+
+    // Only shuffle while the collage is on screen and the tab is visible
+    let inView = false;
+    new IntersectionObserver((entries) => {
+      inView = entries[0].isIntersecting;
+      inView && !document.hidden ? start() : stop();
+    }).observe(collage);
+    document.addEventListener('visibilitychange', () => {
+      inView && !document.hidden ? start() : stop();
+    });
+  }
+
   // Mobile nav menu toggle (bound after the header partial is injected)
   function initNavToggle() {
     const header = document.querySelector('.nav');
