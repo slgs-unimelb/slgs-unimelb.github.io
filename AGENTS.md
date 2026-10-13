@@ -428,7 +428,14 @@ Before committing:
 - [ ] No broken images (all `src` paths exist; `../../` on subpages, `./` on the home page).
 - [ ] Opened the browser console (Cmd+Option+I → Console) and checked for red errors, especially after editing the collage JSON.
 
-Commit on the working branch (currently `v2`) with a message that says what changed, for example:
+**Work on the `v2-dev` branch, never directly on `v2`.** GitHub Pages publishes the live site from `v2`, so anything pushed there is public straight away. Do all development on `v2-dev`, and check which branch you are on before you start:
+
+```sh
+git branch --show-current     # should print v2-dev
+git switch v2-dev             # if it does not
+```
+
+Commit on `v2-dev` with a message that says what changed, for example:
 
 ```sh
 git add index.html pages/events/index.html assets/img/events/2026-agm-recap.jpg
@@ -436,3 +443,12 @@ git commit -m "Move AGM 2026 to past events and add recap photo"
 ```
 
 Do not commit stray files such as `.DS_Store` or unused original photos.
+
+When the changes on `v2-dev` have been checked and are ready to go live, publish them by merging `v2-dev` into `v2`, then go back to `v2-dev`:
+
+```sh
+git switch v2
+git merge --ff-only v2-dev
+git push
+git switch v2-dev
+```

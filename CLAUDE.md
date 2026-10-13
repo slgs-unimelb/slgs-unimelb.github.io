@@ -39,7 +39,9 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 ## Branches
 
-`v1` is the main branch; `v2` is the current redesign branch where work happens.
+- `v2` hosts the live site: GitHub Pages publishes `www.slgs.com.au` from it, so anything pushed to `v2` is public straight away.
+- `v2-dev` is the development branch. **Do all development on `v2-dev`, never directly on `v2`.** Before editing, check the current branch (`git branch --show-current`) and switch to `v2-dev` if needed. Changes reach `v2` only by merging `v2-dev` into it once they are checked and ready to go live.
+- `v1` is the repository's default branch.
 
 ## Open tasks
 
