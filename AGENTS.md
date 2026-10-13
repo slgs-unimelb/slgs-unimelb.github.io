@@ -77,7 +77,11 @@ assets/img/achievements/2026-umsu-best-club-event.jpg
 
 ### Size
 
-Cards show photos only about 370px wide, so large camera files make the site slow without looking any better. Resize before adding them — about **800px on the longest side** is plenty. On macOS:
+The size rules below apply to **card images only** — event photos (`assets/img/events/`) and award images (`assets/img/achievements/`).
+
+**Exception — the group photo in Who We Are.** The committee group photo in the home page "Who We Are" section (`assets/img/group_photo_<year>.JPG`) spans the full width of the page, so keep it in **high resolution**. Do not shrink it to 800px. When replacing it with a new year's photo, use the full-quality export and update its `width` and `height` to match the new file. The same applies to other full-width photos, such as the closing photo above the footer (`assets/img/slgs_random_pic_1.jpg`).
+
+Cards show photos only about 370px wide, so large camera files make the site slow without looking any better. Resize card images before adding them — about **800px on the longest side** is plenty. On macOS:
 
 ```sh
 sips -Z 800 -s formatOptions 80 ~/Downloads/original.jpg --out assets/img/events/2026-event-name.jpg
@@ -90,6 +94,12 @@ sips -g pixelWidth -g pixelHeight assets/img/events/2026-event-name.jpg
 ```
 
 Posters (images with lots of text, like the AGM poster) can be kept at about 1080px so the text stays readable when opened full size.
+
+Very wide panoramas (more than about twice as wide as they are tall) are the exception: cards crop photos to a squarer shape, so an 800px-wide panorama ends up too short and blurry. Size these by **height** instead, to about 600px:
+
+```sh
+sips --resampleHeight 600 -s formatOptions 80 ~/Downloads/panorama.jpg --out assets/img/events/2026-event-name.jpg
+```
 
 ### Choosing a photo
 
