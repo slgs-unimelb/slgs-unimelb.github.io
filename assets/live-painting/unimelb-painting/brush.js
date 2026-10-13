@@ -241,17 +241,20 @@
       ctx.putImageData(image, 0, 0);
     }
 
-    // The last touches: flecks from the brush, then an unpainted margin with a
-    // torn, uneven edge.
+    // The last touches: flecks from the brush, then a torn, uneven edge. The
+    // sheet beyond that edge is cut away, so the page shows through the margin.
     function finish() {
       for (let i = 0; i < 70; i++) {
         dab(between(40, width - 40), between(40, height - 40), between(0.6, 2.2), between(0.6, 2.2),
           pick([INK, '#8a6233', '#4f7436', '#7d848c']), between(0.25, 0.6));
       }
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = '#000';
       for (let i = 0; i < 6; i++) {
         const inset = 20 + i * 3;
-        ctx.globalAlpha = 0.45;
-        ctx.fillStyle = PAPER;
+        // The outermost pass clears the margin outright; the rest feather the edge.
+        ctx.globalAlpha = i ? 0.45 : 1;
         ctx.beginPath();
         ctx.rect(0, 0, width, height);
         roughen(box(inset, inset, width - inset, height - inset), 6, 0.012)
@@ -259,11 +262,12 @@
         ctx.closePath();
         ctx.fill('evenodd');
       }
-      ctx.globalAlpha = 1;
+      ctx.restore();
     }
 
     // Paper grain, drawn on a canvas of its own that is laid over the painting
-    // and multiplied into it: a fine speckle, and fibres in the sheet.
+    // and multiplied into it: a fine speckle, and fibres in the sheet. It is
+    // trimmed to the painting's own edge, so the cut-away margin stays clear.
     function grain(canvas) {
       canvas.width = width;
       canvas.height = height;
@@ -286,6 +290,8 @@
         paper.lineTo(x + Math.cos(angle) * length, y + Math.sin(angle) * length);
         paper.stroke();
       }
+      paper.globalCompositeOperation = 'destination-in';
+      paper.drawImage(ctx.canvas, 0, 0, width, height);
     }
 
     return {

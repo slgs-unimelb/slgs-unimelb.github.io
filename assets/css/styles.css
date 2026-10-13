@@ -286,6 +286,10 @@ main{ position: relative; z-index: 1; }
 /* Keep nav-link targets clear of the sticky header */
 main[id], section[id]{ scroll-margin-top: var(--nav-h); }
 .section--tight{ padding: 56px 0; }
+/* Home page: sections sit closer together than on the subpages.
+   :where() keeps these as easy to override as .section itself. */
+:where(#home) > .section{ padding: 52px 0; }
+:where(#home) > .section--tight{ padding: 40px 0; }
 
 .grid{
   display:grid;
@@ -387,9 +391,9 @@ h1{
 }
 /* Show the whole photo at its own aspect ratio (set via width/height attributes) */
 .media.media--natural img{ height: auto; }
-/* Closing live painting above the footer: centred, at its own 3:2 shape, narrower than the page */
+/* Closing live painting above the footer: centred at 87% of the page width, at its own 3:2 shape */
 .section--photo{ padding: 0 0 36px; }
-.media.media--painting{ max-width: 860px; margin-inline: auto; }
+.media.media--painting{ width: 87%; margin-inline: auto; }
 .closing-note{
   max-width: 62ch;
   margin: 22px auto 0;
@@ -576,6 +580,9 @@ hr.sep{
 
 /* Side by side with the upcoming event: let the collage fill the box's height */
 @media (min-width: 981px){
+  /* The featured card's uncropped image sets the row height, so a narrower
+     column for it makes both cards shorter */
+  .events-grid{ grid-template-columns: 0.85fr 1.15fr; }
   .recent-events .collage{
     flex: 1;
     aspect-ratio: auto;
@@ -1048,6 +1055,10 @@ textarea.input{ min-height: 120px; resize: vertical; }
 
   .section{ padding: 52px 0; }
   .section--tight{ padding: 40px 0; }
+  :where(#home) > .section{ padding: 36px 0; }
+  :where(#home) > .section--tight{ padding: 28px 0; }
+  .section--photo{ padding: 0 0 36px; }
+  .media.media--painting{ width: 100%; }
   .hero{ padding-top: 28px; }
 
   h1{ font-size: clamp(30px, 9vw, 40px); }

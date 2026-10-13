@@ -22,7 +22,7 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 ## Architecture
 
-- `index.html` is the main single-page site. Its sections (`#about`, `#offer`, `#events`, `#scholarships`, `#team`, `#join`) are the targets of the primary nav.
+- `index.html` is the main single-page site. Its sections are `#about`, `#offer`, `#events`, `#scholarships`, `#team` and `#join`; the primary nav links to `#home` (the `<main>`, i.e. the top of the page), `#events`, `#scholarships`, `#team` and `#join`.
 - `pages/<name>/index.html` are standalone subpages. Linked from the site: `events`, `scholarships`, `achievements`, `team`. Not linked anywhere (the Contact nav link is commented out in `header.html`): `contact`, `resources`. Subpages reference assets with `../../` relative paths, while `index.html` uses `./`.
 - **Shared partials**: pages include `<div data-header>` before `<main>` and `<div data-footer>` **after** `</main>` (inside `<main>` the footer would be double-inset by `.container` and not line up with page content). `assets/js/app.js` fetches `assets/partials/header.html` / `footer.html`, replaces the `{{BASE}}` token with `.` or `../..` (chosen by whether the path contains `/pages/`), and swaps the placeholder via `outerHTML`. Edit the nav and footer in the partials, not in individual pages. A subpage can set `data-header-page="<name>"` to mark the matching `[data-page]` nav link with `aria-current`. New pages must live under `pages/` for the base-path logic to work.
 - Keep the partials free of inline `<svg>`: icons (Facebook/Instagram pills, the email button envelope) are CSS `mask` data URIs on `.pill--facebook`, `.pill--instagram` and `.btn--mail` in `styles.css`.

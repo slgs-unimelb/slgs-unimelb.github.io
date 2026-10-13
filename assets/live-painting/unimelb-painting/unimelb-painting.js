@@ -55,7 +55,6 @@
         aspect-ratio: ${SHEET.width} / ${SHEET.height};
         overflow: hidden;
         isolation: isolate;
-        background: #f5f0e4;
       }
       canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
       .flag { position: absolute; max-width: none; }
