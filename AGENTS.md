@@ -79,7 +79,9 @@ assets/img/achievements/2026-umsu-best-club-event.jpg
 
 The size rules below apply to **card images only** — event photos (`assets/img/events/`) and award images (`assets/img/achievements/`).
 
-**Exception — the group photo in Who We Are.** The committee group photo in the home page "Who We Are" section (`assets/img/group_photo_<year>.JPG`) spans the full width of the page, so keep it in **high resolution**. Do not shrink it to 800px. When replacing it with a new year's photo, use the full-quality export and update its `width` and `height` to match the new file. The same applies to other full-width photos, such as the closing photo above the footer (`assets/img/slgs_random_pic_1.jpg`).
+**Exception — the group photo in Who We Are.** The committee group photo in the home page "Who We Are" section (`assets/img/group_photo_<year>.JPG`) spans the full width of the page, so keep it in **high resolution**. Do not shrink it to 800px. When replacing it with a new year's photo, use the full-quality export and update its `width` and `height` to match the new file. The same applies to any other full-width photo.
+
+The picture above the footer on the home page is not a photo: it is a live painting drawn in code (`<unimelb-painting>`, in `assets/live-painting/`). To adjust it, see `assets/live-painting/README.md`.
 
 Cards show photos only about 370px wide, so large camera files make the site slow without looking any better. Resize card images before adding them — about **800px on the longest side** is plenty. On macOS:
 

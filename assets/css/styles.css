@@ -387,9 +387,9 @@ h1{
 }
 /* Show the whole photo at its own aspect ratio (set via width/height attributes) */
 .media.media--natural img{ height: auto; }
-/* Closing photo above the footer: full width, height capped so it reads as a banner */
+/* Closing live painting above the footer: centred, at its own 3:2 shape, narrower than the page */
 .section--photo{ padding: 0 0 36px; }
-.media.media--banner img{ height: clamp(200px, 36vw, 420px); }
+.media.media--painting{ max-width: 860px; margin-inline: auto; }
 .closing-note{
   max-width: 62ch;
   margin: 22px auto 0;
