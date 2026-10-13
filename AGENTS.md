@@ -149,7 +149,7 @@ Events page version (note `../../`):
 Optional extras:
 
 - **Poster image** (text at the top that must not be cropped): use `class="event-card-img event-card-img--poster"`.
-- **Show the whole image uncropped** (used for the home page featured card): use `class="event-card-img event-card-img--full"`.
+- **Show the whole image uncropped** (used for the home page featured card): use `class="event-card-img event-card-img--full"`. One exception: on desktop the home page featured card trims this image to a fixed shape so it matches the Recent Events box beside it. The top of the image is never cut; the trim comes only from the bottom. A square poster loses the bottom 15% of its height, so check that nothing important sits there (taller images lose more, and images wider than about 6:5 lose a little from the sides instead).
 - **Highlight the card** with the animated colour border: add `ring` → `class="card ring event-card reveal"`. Use it only for the upcoming/featured event.
 - **No Facebook post yet** (e.g. an announcement with only a poster): link to the poster instead:
   ```html
